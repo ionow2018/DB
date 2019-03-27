@@ -1,0 +1,29 @@
+﻿{% extends "base.html" %}
+ 
+{% block content %}
+	{% for user in users %}
+		<div class="alert alert-dark" role="alert">
+			<h2>{{user[1]}}</h2>
+			<div>
+			{% if user[5]==1 %}
+				Администратор
+			{% elif user[5]==2 %}
+				Опытный пользователь
+			{% elif user[5]==3 %}
+				Пользователь
+			{% endif %}
+			, почта {{user[4]}}
+			</div>
+			{% if user[3]==1 %}
+				<div>Заблокирован</div>
+			{% endif %}
+			{% if user[0]!=ssn['user_id'] %}
+				{% if user[3]==1 %}
+					<a href="/lock_user/{{user[0]}}">Разблокировать пользователя</a>
+				{% else %}
+					<a href="/lock_user/{{user[0]}}">Заблокировать пользователя</a>
+				{% endif %}
+			{% endif %}
+		</div>
+	{% endfor %}
+{% endblock %}

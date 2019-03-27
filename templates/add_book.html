@@ -1,0 +1,12 @@
+﻿{% extends "view_book.html" %}
+ 
+{% block modify %}
+        {% if exist==1 %}
+			<p>
+			<div class="alert alert-danger" role="alert">
+				Такая книга уже есть
+            </div>
+			</p>
+        {% endif %}
+	<p>{{ form.submit() }}</p>
+{% endblock %}

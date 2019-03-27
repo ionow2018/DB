@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+ 
+{% block content %}
+	{% if 'username' in ssn %}
+		<h1>Привет, {{ ssn['username'] }}!</h1>
+		{% if ssn['level']==1 or ssn['level']==2 %}
+			<a href="/add_book">Добавить книгу</a>
+		{% endif %}
+	{% endif %}
+	{% for item in books %}
+		<div class="alert alert-dark" role="alert">
+			<h2>{{item[1]}}</h2>
+			<div>{{item[2]}}</div>
+			{% if 'user_id' in ssn %}
+				<a href="/view_book/{{item[0]}}">Просмотр книги</a>
+				{% if ssn['level']==1 or item[9] == ssn['user_id'] %}
+					<a href="/modify_book/{{item[0]}}">Изменить описание книги</a>
+					<a href="/add_file_book/{{item[0]}}">Выгрузить файл книги</a>
+				{% endif %}
+				{% if ssn['level']==1 %}
+					<a href="/del_book/{{item[0]}}">Удалить книгу</a>
+				{% endif %}
+			{% endif %}
+		</div>
+	{% endfor %}
+{% endblock %}

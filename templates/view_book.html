@@ -1,0 +1,51 @@
+﻿{% extends "base.html" %}
+ 
+{% block content %}
+	{% if view==1 %}
+		<h1>Просмотр книги</h1>
+    {% else %}
+		<h1>Изменение книги</h1>
+    {% endif %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title }}<br>
+            {% for error in form.title.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.author.label }}<br>
+            {{ form.author }}<br>
+            {% for error in form.author.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.genre.label }}<br>
+            {{ form.genre }}<br>
+        </p>
+        <p>
+            {{ form.year.label }}<br>
+            {{ form.year }}<br>
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description }}<br>
+        </p>
+        <p>
+            {{ form.content.label }}<br>
+            {{ form.content }}<br>
+        </p>
+        <p>
+            {{ form.link.label }}<br>
+            {{ form.link }}<br>
+        </p>
+		{% block modify %}{% endblock %}
+    </form>
+{% endblock %}

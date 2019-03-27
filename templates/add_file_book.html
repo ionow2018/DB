@@ -1,0 +1,12 @@
+﻿{% extends "base.html" %}
+ 
+{% block content %}
+	<h1>Выгрузка книги</h1>
+    <form method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="upload">Выберите файл</label>
+			<input type="file" class="form-control-file" id="upload" name="file">
+		</div>
+		<button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+{% endblock %}
